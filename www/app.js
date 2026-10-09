@@ -56,6 +56,8 @@ var ONLINE_SERVICES=[
   {n:"Aadhaar Download",d:"आधार कार्ड डाउनलोड करें",icon:"🪪",url:"https://myaadhaar.uidai.gov.in/genricDownloadAadhaar"},
   {n:"PVC Card Order",d:"PVC आधार कार्ड मंगवाएं (₹75)",icon:"💳",url:"https://myaadhaar.uidai.gov.in/genricPVC"},
   {n:"Seva Kendra Appointment",d:"मोबाइल/बायोमेट्रिक सुधार हेतु",icon:"📅",url:"https://bookappointment.uidai.gov.in/"},
+  {n:"Center Locator",d:"नज़दीकी आधार केंद्र खोजें",icon:"📍",url:"https://appointments.uidai.gov.in/easearch.aspx"},
+  {n:"SSUP Update Portal",d:"आधार अपडेट पोर्टल",icon:"🔄",url:"https://ssup.uidai.gov.in/"},
   {n:"Bank Link Status",d:"आधार-बैंक लिंक जांचें",icon:"🏦",url:"https://resident.uidai.gov.in/bank-mapper"}
  ]},
  {cat:"🪪 पहचान पत्र", items:[
