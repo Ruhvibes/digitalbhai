@@ -52,12 +52,19 @@ var PORTALS=[
 ];
 /* ---------- ONLINE SERVICES (CSC jaisa — sab kuchh online) ---------- */
 var ONLINE_SERVICES=[
- {cat:"🪪 पहचान पत्र", items:[
+ {cat:"🪪 Aadhaar Seva (bina CSC ID)", items:[
   {n:"Aadhaar Download",d:"आधार कार्ड डाउनलोड करें",icon:"🪪",url:"https://myaadhaar.uidai.gov.in/genricDownloadAadhaar"},
-  {n:"Aadhaar Update",d:"पता/मोबाइल अपडेट",icon:"✏️",url:"https://myaadhaar.uidai.gov.in/"},
+  {n:"PVC Card Order",d:"PVC आधार कार्ड मंगवाएं (₹75)",icon:"💳",url:"https://myaadhaar.uidai.gov.in/genricPVC"},
+  {n:"Seva Kendra Appointment",d:"मोबाइल/बायोमेट्रिक सुधार हेतु",icon:"📅",url:"https://bookappointment.uidai.gov.in/"},
+  {n:"Bank Link Status",d:"आधार-बैंक लिंक जांचें",icon:"🏦",url:"https://resident.uidai.gov.in/bank-mapper"}
+ ]},
+ {cat:"🪪 पहचान पत्र", items:[
+  {n:"Aadhaar Update",d:"नाम/पता/जन्मतिथि ऑनलाइन",icon:"✏️",url:"https://myaadhaar.uidai.gov.in/"},
   {n:"PAN Card Apply",d:"नया पैन कार्ड आवेदन",icon:"💳",url:"https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html"},
+  {n:"PAN Status Check",d:"पैन आवेदन की स्थिति",icon:"🔍",url:"https://tin.tin.nsdl.com/pantan/StatusTrack.html"},
   {n:"Voter ID",d:"वोटर कार्ड आवेदन/सुधार",icon:"🗳️",url:"https://voters.eci.gov.in/"},
-  {n:"Passport Seva",d:"पासपोर्ट आवेदन",icon:"🛂",url:"https://www.passportindia.gov.in/"}
+  {n:"Passport Seva",d:"पासपोर्ट आवेदन",icon:"🛂",url:"https://www.passportindia.gov.in/"},
+  {n:"E-Shram Card",d:"श्रमिक कार्ड बनवाएं",icon:"👷",url:"https://eshram.gov.in/"}
  ]},
  {cat:"💡 बिल व यात्रा", items:[
   {n:"Bijli Bill (Bihar)",d:"बिजली बिल भुगतान",icon:"💡",url:"https://www.nbpdcl.co.in/"},
