@@ -65,7 +65,7 @@ var ONLINE_SERVICES=[
   {n:"UMANG",d:"सभी सरकारी सेवाएं",icon:"📱",url:"https://web.umang.gov.in/"}
  ]},
  {cat:"🏛️ CSC व सरकारी", items:[
-  {n:"CSC Digital Seva",d:"CSC पोर्टल",icon:"🏛️",url:"https://digitalseva.csc.gov.in/"},
+  {n:"CSC Registration",d:"CSC ID ke liye apply karein",icon:"📝",url:"https://register.csc.gov.in/"},
   {n:"DigiLocker",d:"डिजिटल दस्तावेज़",icon:"🗂️",url:"https://www.digilocker.gov.in/"},
   {n:"RTPS Bihar",d:"जाति/आय/निवास प्रमाण",icon:"📜",url:"https://rtps.bihar.gov.in/"}
  ]}
