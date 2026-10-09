@@ -2,185 +2,341 @@
 <html lang="hi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Digital Bhai — Cyber Cafe &amp; Digital Seva Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Bhai — Cyber Cafe & Digital Seva Center</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="app">
 
-  <!-- ============ TOP BAR ============ -->
-  <header id="topbar">
-    <div class="tb-logo">🏪</div>
-    <div class="tb-text">
-      <div class="tb-title">DIGITAL BHAI</div>
-      <div class="tb-sub" id="shop-subtitle">Cyber Cafe &amp; Digital Seva Center</div>
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <button id="hamburger" aria-label="Menu">☰</button>
+  <div class="brand">
+    <div class="brand-logo">💻</div>
+    <div class="brand-text">
+      <div class="brand-name">DIGITAL <span>BHAI</span></div>
+      <div class="brand-sub">Cyber Cafe &amp; Digital Seva Center</div>
+      <div class="brand-tag">आपका काम, हमारी जिम्मेदारी</div>
     </div>
-    <div class="tb-date" id="tb-date"></div>
-  </header>
+  </div>
+  <div class="top-search">
+    <span class="ts-icon">🔍</span>
+    <input id="global-search" type="text" placeholder="Search Service, Customer, Work ID...">
+    <kbd>Ctrl + K</kbd>
+  </div>
+  <div class="top-right">
+    <button class="icon-btn" id="bell-btn" title="Notifications">🔔<span class="badge" id="bell-badge">3</span></button>
+    <div class="top-date"><span id="top-date">--</span><br><span id="top-time">--</span></div>
+    <div class="admin-chip"><span class="admin-av">👤</span><span>Admin<br><b>OWNER</b></span></div>
+  </div>
+</header>
 
-  <main id="main">
+<div class="layout">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <nav id="side-nav">
+      <button class="sn-item active" data-view="dashboard"><span>🏠</span> Dashboard</button>
+      <button class="sn-item" data-view="new-customer"><span>👤</span> New Customer</button>
+      <button class="sn-item" data-view="customers"><span>👥</span> Customer List</button>
+      <button class="sn-item" data-view="works"><span>🧾</span> Work Management</button>
+      <button class="sn-item" data-view="services"><span>🛎️</span> Service Center <i>▾</i></button>
+      <button class="sn-item" data-view="online"><span>🌐</span> Online Services</button>
+      <button class="sn-item" data-view="cat-government"><span>🏛️</span> Government Services</button>
+      <button class="sn-item" data-view="cat-scholarship"><span>🎓</span> Scholarships</button>
+      <button class="sn-item" data-view="cat-jobs"><span>💼</span> Jobs &amp; Career</button>
+      <button class="sn-item" data-view="cat-education"><span>🏫</span> Education &amp; Admission</button>
+      <button class="sn-item" data-view="cat-certificates"><span>📜</span> Certificates (RTPS)</button>
+      <button class="sn-item" data-view="cat-admit"><span>🎫</span> Admit Card &amp; Result</button>
+      <button class="sn-item" data-view="cat-documents"><span>📁</span> Document Tools</button>
+      <button class="sn-item" data-view="cat-print"><span>🖨️</span> Print &amp; Scan</button>
+      <button class="sn-item" data-view="payments"><span>💳</span> Payments &amp; Billing</button>
+      <button class="sn-item" data-view="reports"><span>📊</span> Reports</button>
+      <button class="sn-item" data-view="staff"><span>👔</span> Staff Management</button>
+      <button class="sn-item" data-view="settings"><span>⚙️</span> Shop Settings</button>
+      <button class="sn-item" data-view="portal"><span>🌐</span> Customer Portal</button>
+      <button class="sn-item" data-view="help"><span>❓</span> Help &amp; Support</button>
+    </nav>
+    <a class="wa-support" id="wa-support" href="#">💬 Customer Support<br><b>on WhatsApp</b></a>
+  </aside>
+  <div class="side-overlay hidden" id="side-overlay"></div>
 
-    <!-- ============ 1. DASHBOARD ============ -->
-    <section class="screen active" id="s-dash">
-      <div class="stats-grid" id="stats-grid"></div>
-      <button class="big-btn" id="dash-new-work">➕ नया काम शुरू करें</button>
-      <h2 class="sec-title">🕐 आज के काम</h2>
-      <div id="dash-works"></div>
+  <!-- ============ MAIN ============ -->
+  <main class="main" id="main">
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view active" id="v-dashboard">
+      <div class="banner">
+        <div class="banner-inner">
+          <div class="banner-title">DIGITAL <span>BHAI</span></div>
+          <div class="banner-sub">Cyber Cafe &amp; Digital Seva Center</div>
+        </div>
+        <div class="banner-badges">
+          <span>🖨️ PRINT</span><span>📄 SCAN</span><span>🪪 LAMINATION</span><span>🌐 ONLINE FORM</span><span>💼 JOB APPLY</span><span>🎓 SCHOLARSHIP</span><span>📜 CERTIFICATE</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="st-ic green">👥</span><div><b id="st-customers">0</b><small>Today's Customers</small></div></div>
+        <div class="stat"><span class="st-ic blue">🧾</span><div><b id="st-works">0</b><small>Total Works</small></div></div>
+        <div class="stat"><span class="st-ic orange">⏳</span><div><b id="st-processing">0</b><small>Processing</small></div></div>
+        <div class="stat"><span class="st-ic purple">✅</span><div><b id="st-completed">0</b><small>Completed</small></div></div>
+        <div class="stat alert"><span class="st-ic red">⚠️</span><div><b id="st-action">0</b><small>Action Required</small></div></div>
+        <div class="stat money"><span class="st-ic yellow">₹</span><div><b id="st-collection">₹0</b><small>Today's Collection</small></div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Start New Work <small>(One Window Service)</small></h3>
+          <div><a href="#" id="quick-entry">Quick Entry</a> <button class="btn primary" id="create-work-btn">＋ Create Work</button></div>
+        </div>
+        <div class="svc-search"><span>🔍</span><input id="svc-search" type="text" placeholder="Search your service here... (e.g. Caste Certificate, NSP, Job Apply)"></div>
+        <div class="svc-tabs" id="svc-tabs">
+          <button class="on" data-cat="all">All Services</button>
+          <button data-cat="government">Government</button>
+          <button data-cat="scholarship">Scholarship</button>
+          <button data-cat="jobs">Jobs</button>
+          <button data-cat="education">Education</button>
+          <button data-cat="certificates">Certificates</button>
+          <button data-cat="documents">Documents</button>
+          <button data-cat="other">Other</button>
+        </div>
+        <div class="svc-grid" id="svc-grid"></div>
+      </div>
+
+      <div class="cols-2">
+        <div class="panel">
+          <div class="panel-head"><h3>Today's Work List</h3><a href="#" data-goto="works">View All</a></div>
+          <div class="mini-tabs" id="work-tabs">
+            <button class="on" data-f="all">All (<span id="c-all">0</span>)</button>
+            <button data-f="Processing">Processing (<span id="c-proc">0</span>)</button>
+            <button data-f="Completed">Completed (<span id="c-comp">0</span>)</button>
+            <button data-f="Pending">Pending (<span id="c-pend">0</span>)</button>
+          </div>
+          <div class="table-wrap"><table class="tbl" id="dash-work-tbl">
+            <thead><tr><th>#</th><th>Work ID</th><th>Customer Name</th><th>Service</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Upcoming Follow-Ups</h3><a href="#" data-goto="works">View All</a></div>
+          <div id="followups"></div>
+        </div>
+      </div>
+
+      <div class="cols-3">
+        <div class="panel">
+          <div class="panel-head"><h3>Recent Customers</h3><a href="#" data-goto="customers">View All</a></div>
+          <div class="table-wrap"><table class="tbl" id="recent-cust-tbl">
+            <thead><tr><th>Name</th><th>Mobile</th><th>Total Works</th><th>Last Visit</th><th>Action</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Quick Links <small>(Official Portals)</small></h3><a href="#" id="open-all-portals">Open in New Tab</a></div>
+          <div class="portal-grid" id="portal-grid"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Shop Announcements</h3><a href="#" data-goto="settings">Manage</a></div>
+          <div id="announcements"></div>
+        </div>
+      </div>
+      <div class="foot">Made with ♥ by Hasnain • Digital Bhai 1.0</div>
     </section>
 
-    <!-- ============ 2. WORKS ============ -->
-    <section class="screen" id="s-works">
-      <div class="row-between">
-        <h2 class="sec-title" style="margin:0">🧾 काम</h2>
-        <button class="btn primary sm" id="works-add">➕ नया काम</button>
+    <!-- CUSTOMERS VIEW -->
+    <section class="view" id="v-customers">
+      <div class="panel">
+        <div class="panel-head"><h3>👥 Customer List</h3><button class="btn primary" id="add-cust-btn">＋ New Customer</button></div>
+        <div class="svc-search"><span>🔍</span><input id="cust-search" type="text" placeholder="Search customer by name or mobile..."></div>
+        <div class="table-wrap"><table class="tbl" id="cust-tbl">
+          <thead><tr><th>#</th><th>Name</th><th>Mobile</th><th>Address</th><th>Total Works</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
       </div>
-      <div class="chips" id="work-filters">
-        <button class="chip on" data-f="all">सभी</button>
-        <button class="chip" data-f="processing">प्रोसेसिंग</button>
-        <button class="chip" data-f="pending">पेंडिंग</button>
-        <button class="chip" data-f="completed">पूर्ण</button>
-      </div>
-      <div id="works-list"></div>
     </section>
 
-    <!-- ============ 3. CUSTOMERS ============ -->
-    <section class="screen" id="s-customers">
-      <div class="row-between">
-        <h2 class="sec-title" style="margin:0">👥 ग्राहक</h2>
-        <button class="btn primary sm" id="cust-add">➕ नया ग्राहक</button>
+    <!-- WORKS VIEW -->
+    <section class="view" id="v-works">
+      <div class="panel">
+        <div class="panel-head"><h3>🧾 Work Management</h3><button class="btn primary" id="add-work-btn">＋ New Work</button></div>
+        <div class="mini-tabs" id="work-tabs2">
+          <button class="on" data-f="all">All</button>
+          <button data-f="Processing">Processing</button>
+          <button data-f="Pending">Pending</button>
+          <button data-f="Completed">Completed</button>
+          <button data-f="Action Required">Action Required</button>
+        </div>
+        <div class="table-wrap"><table class="tbl" id="work-tbl">
+          <thead><tr><th>#</th><th>Work ID</th><th>Customer</th><th>Service</th><th>Amount</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
       </div>
-      <div class="search-wrap">
-        <input type="search" id="cust-search" placeholder="🔍 नाम या मोबाइल खोजें…">
-      </div>
-      <div id="cust-list"></div>
     </section>
 
-    <!-- ============ 4. PAYMENTS ============ -->
-    <section class="screen" id="s-payments">
-      <h2 class="sec-title">💰 पेमेंट</h2>
-      <div class="card highlight">
-        <div class="muted">आज का कलेक्शन</div>
-        <div class="big-amount" id="today-collection">₹0</div>
+    <!-- PAYMENTS VIEW -->
+    <section class="view" id="v-payments">
+      <div class="stats">
+        <div class="stat money"><span class="st-ic yellow">₹</span><div><b id="pay-today">₹0</b><small>Today's Collection</small></div></div>
+        <div class="stat"><span class="st-ic blue">🧾</span><div><b id="pay-total">₹0</b><small>Total Collected</small></div></div>
+        <div class="stat alert"><span class="st-ic red">⏳</span><div><b id="pay-due">₹0</b><small>Pending Amount</small></div></div>
       </div>
-      <h3 class="sec-title sm">⏳ बकाया पेमेंट</h3>
-      <div id="pending-list"></div>
+      <div class="panel">
+        <div class="panel-head"><h3>💰 Payments &amp; Billing</h3><button class="btn primary" id="add-pay-btn">＋ Receive Payment</button></div>
+        <div class="table-wrap"><table class="tbl" id="pay-tbl">
+          <thead><tr><th>#</th><th>Date</th><th>Customer</th><th>Work ID</th><th>Amount</th><th>Note</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>⚠️ Pending Payments</h3></div>
+        <div class="table-wrap"><table class="tbl" id="due-tbl">
+          <thead><tr><th>Work ID</th><th>Customer</th><th>Service</th><th>Total</th><th>Paid</th><th>Due</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </div>
     </section>
 
-    <!-- ============ 5. MORE ============ -->
-    <section class="screen" id="s-more">
-      <h2 class="sec-title">⋮ और</h2>
-      <h3 class="sec-title sm">🛎️ सेवाएं</h3>
-      <div class="svc-grid" id="svc-grid"></div>
-      <h3 class="sec-title sm">📊 रिपोर्ट</h3>
-      <div class="card" id="report-card"></div>
-      <h3 class="sec-title sm">⚙️ सेटिंग</h3>
-      <div class="card">
-        <label class="fld-label">दुकान का नाम</label>
-        <input type="text" id="set-shopname" class="fld" placeholder="जैसे — Digital Bhai Seva Center">
-        <button class="btn primary" id="set-save" style="margin-top:10px">💾 सहेजें</button>
+    <!-- REPORTS VIEW -->
+    <section class="view" id="v-reports">
+      <div class="panel">
+        <div class="panel-head"><h3>📊 Reports</h3></div>
+        <div class="stats" id="report-stats"></div>
+        <div class="panel-head"><h3>Service-wise Works</h3></div>
+        <div class="table-wrap"><table class="tbl" id="report-tbl">
+          <thead><tr><th>Service</th><th>Works</th><th>Collected (₹)</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
       </div>
-      <div class="more-btns">
-        <button class="btn ghost" id="more-share">📤 शेयर करें</button>
-        <button class="btn ghost" id="more-feedback">💬 फीडबैक</button>
+    </section>
+
+    <!-- STAFF VIEW -->
+    <section class="view" id="v-staff">
+      <div class="panel">
+        <div class="panel-head"><h3>👔 Staff Management</h3><button class="btn primary" id="add-staff-btn">＋ Add Staff</button></div>
+        <div class="table-wrap"><table class="tbl" id="staff-tbl">
+          <thead><tr><th>#</th><th>Name</th><th>Mobile</th><th>Role</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
       </div>
-      <div class="foot-note">Made by Hasnain ❤️<br>v1.0</div>
+    </section>
+
+    <!-- SETTINGS VIEW -->
+    <section class="view" id="v-settings">
+      <div class="panel">
+        <div class="panel-head"><h3>⚙️ Shop Settings</h3></div>
+        <div class="form">
+          <label>Shop Name<input id="set-shop" type="text"></label>
+          <label>Owner Name<input id="set-owner" type="text"></label>
+          <label>Mobile<input id="set-mobile" type="text"></label>
+          <label>Address<input id="set-address" type="text"></label>
+          <button class="btn primary" id="save-settings">💾 Save Settings</button>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>📢 Manage Announcements</h3><button class="btn primary" id="add-ann-btn">＋ Add</button></div>
+        <div id="ann-manage"></div>
+      </div>
+    </section>
+
+    <!-- PORTAL / HELP VIEWS -->
+    <section class="view" id="v-online">
+      <div class="panel"><div class="panel-head"><h3>🌐 Online Services</h3><span class="muted">CSC जैसा — सब कुछ ऑनलाइन</span></div>
+        <div id="online-list"></div>
+      </div>
+    </section>
+    <section class="view" id="v-portal">
+      <div class="panel"><div class="panel-head"><h3>🌐 Customer Portal</h3></div>
+        <p class="muted">Customers can check their work status using Work ID.</p>
+        <div class="form"><label>Work ID <input id="portal-wid" placeholder="e.g. DB-1025"></label>
+        <button class="btn primary" id="portal-check">Check Status</button></div>
+        <div id="portal-result"></div>
+      </div>
+    </section>
+    <section class="view" id="v-help">
+      <div class="panel"><div class="panel-head"><h3>❓ Help &amp; Support</h3></div>
+        <div class="help-list">
+          <div><b>नया काम कैसे बनाएं?</b><p>Dashboard → "Create Work" दबाएं, ग्राहक और सेवा चुनें, राशि डालें।</p></div>
+          <div><b>पेमेंट कैसे लें?</b><p>Work पर tap करें → "पेमेंट लें", या Payments tab से।</p></div>
+          <div><b>डेटा कहां सेव होता है?</b><p>सब कुछ आपके फोन में सुरक्षित रहता है (offline)।</p></div>
+          <div><b>संपर्क</b><p>Customer Support on WhatsApp — sidebar में हरा बटन।</p></div>
+        </div>
+        <div class="foot">Made with ♥ by Hasnain • Digital Bhai 1.0</div>
+      </div>
     </section>
 
   </main>
-
-  <!-- ============ BOTTOM NAV ============ -->
-  <nav id="bottomnav">
-    <button data-nav="s-dash" class="on">🏠<span>डैशबोर्ड</span></button>
-    <button data-nav="s-works">🧾<span>काम</span></button>
-    <button data-nav="s-customers">👥<span>ग्राहक</span></button>
-    <button data-nav="s-payments">💰<span>पेमेंट</span></button>
-    <button data-nav="s-more">⋮<span>और</span></button>
-  </nav>
 </div>
 
-<!-- ============ MODAL: NEW WORK ============ -->
-<div class="modal hidden" id="m-work">
-  <div class="modal-box">
-    <h3 id="m-work-title">➕ नया काम</h3>
-    <label class="fld-label">ग्राहक चुनें</label>
-    <select id="w-customer" class="fld"></select>
-    <label class="fld-label">सेवा चुनें</label>
-    <select id="w-service" class="fld"></select>
-    <label class="fld-label">राशि (₹)</label>
-    <input type="number" id="w-amount" class="fld" placeholder="जैसे — 150" min="0">
-    <label class="fld-label">स्थिति</label>
-    <select id="w-status" class="fld">
-      <option value="processing">प्रोसेसिंग</option>
-      <option value="pending">पेंडिंग</option>
-      <option value="completed">पूर्ण</option>
-    </select>
-    <label class="fld-label">नोट (वैकल्पिक)</label>
-    <input type="text" id="w-note" class="fld" placeholder="जैसे — कल तक देना है">
-    <div class="modal-btns">
-      <button class="btn ghost" data-close="m-work">रद्द करें</button>
-      <button class="btn primary" id="w-save">💾 सहेजें</button>
-    </div>
-  </div>
-</div>
-
-<!-- ============ MODAL: NEW CUSTOMER ============ -->
+<!-- ============ MODALS ============ -->
 <div class="modal hidden" id="m-customer">
   <div class="modal-box">
-    <h3>➕ नया ग्राहक</h3>
-    <label class="fld-label">नाम *</label>
-    <input type="text" id="c-name" class="fld" placeholder="जैसे — राहुल कुमार">
-    <label class="fld-label">मोबाइल *</label>
-    <input type="tel" id="c-mobile" class="fld" placeholder="10 अंकों का नंबर" maxlength="10" inputmode="numeric">
-    <label class="fld-label">पता</label>
-    <input type="text" id="c-address" class="fld" placeholder="गांव / शहर">
-    <div class="modal-btns">
-      <button class="btn ghost" data-close="m-customer">रद्द करें</button>
-      <button class="btn primary" id="c-save">💾 सहेजें</button>
+    <h3 id="mc-title">👤 New Customer</h3>
+    <div class="form">
+      <label>Name *<input id="mc-name" placeholder="ग्राहक का नाम"></label>
+      <label>Mobile *<input id="mc-mobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></label>
+      <label>Address<input id="mc-address" placeholder="पता"></label>
+      <div class="mrow"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="mc-save">💾 Save</button></div>
     </div>
   </div>
 </div>
 
-<!-- ============ MODAL: WORK DETAIL ============ -->
+<div class="modal hidden" id="m-work">
+  <div class="modal-box">
+    <h3>🧾 <span id="mw-title">New Work</span></h3>
+    <div class="form">
+      <label>Customer *<select id="mw-cust"></select></label>
+      <label>Service *<select id="mw-svc"></select></label>
+      <label>Amount (₹)<input id="mw-amt" type="number" min="0" placeholder="0"></label>
+      <label>Status<select id="mw-status"><option>Processing</option><option>Pending</option><option>Completed</option><option>Action Required</option></select></label>
+      <label>Note<input id="mw-note" placeholder="नोट (optional)"></label>
+      <div class="mrow"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="mw-save">💾 Save Work</button></div>
+    </div>
+  </div>
+</div>
+
 <div class="modal hidden" id="m-detail">
   <div class="modal-box">
-    <h3 id="d-title">🧾 काम का विवरण</h3>
-    <div id="d-body"></div>
-    <label class="fld-label">स्थिति बदलें</label>
-    <select id="d-status" class="fld">
-      <option value="processing">प्रोसेसिंग</option>
-      <option value="pending">पेंडिंग</option>
-      <option value="completed">पूर्ण</option>
-    </select>
-    <div class="modal-btns">
-      <button class="btn ghost" data-close="m-detail">बंद करें</button>
-      <button class="btn primary" id="d-pay">💰 पेमेंट लें</button>
-      <button class="btn primary" id="d-save-status">💾 स्थिति सहेजें</button>
+    <h3>Work Detail <span id="md-id" class="wid"></span></h3>
+    <div id="md-body"></div>
+    <div class="mrow">
+      <button class="btn ghost" data-close>Close</button>
+      <button class="btn" id="md-pay">💰 पेमेंट लें</button>
+      <button class="btn primary" id="md-status">🔄 Status बदलें</button>
     </div>
   </div>
 </div>
 
-<!-- ============ MODAL: PAYMENT ============ -->
-<div class="modal hidden" id="m-payment">
+<div class="modal hidden" id="m-pay">
   <div class="modal-box">
-    <h3>💰 पेमेंट लें</h3>
-    <div id="p-info" class="muted" style="margin-bottom:10px"></div>
-    <label class="fld-label">राशि (₹)</label>
-    <input type="number" id="p-amount" class="fld" placeholder="जैसे — 150" min="1">
-    <div class="modal-btns">
-      <button class="btn ghost" data-close="m-payment">रद्द करें</button>
-      <button class="btn primary" id="p-save">✅ प्राप्त करें</button>
+    <h3>💰 Receive Payment</h3>
+    <div class="form">
+      <label>Work *<select id="mp-work"></select></label>
+      <label>Amount (₹) *<input id="mp-amt" type="number" min="1" placeholder="राशि"></label>
+      <label>Note<input id="mp-note" placeholder="नोट (optional)"></label>
+      <div class="mrow"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="mp-save">✅ Payment लें</button></div>
     </div>
   </div>
 </div>
 
-<!-- ============ MODAL: CUSTOMER HISTORY ============ -->
-<div class="modal hidden" id="m-history">
+<div class="modal hidden" id="m-staff">
   <div class="modal-box">
-    <h3 id="h-title">👤 ग्राहक</h3>
-    <div id="h-body"></div>
-    <div class="modal-btns">
-      <button class="btn ghost" data-close="m-history">बंद करें</button>
+    <h3>👔 Add Staff</h3>
+    <div class="form">
+      <label>Name *<input id="ms-name" placeholder="नाम"></label>
+      <label>Mobile<input id="ms-mobile" maxlength="10" placeholder="मोबाइल"></label>
+      <label>Role<input id="ms-role" placeholder="e.g. Operator"></label>
+      <div class="mrow"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="ms-save">💾 Save</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal hidden" id="m-ann">
+  <div class="modal-box">
+    <h3>📢 New Announcement</h3>
+    <div class="form">
+      <label>Title *<input id="ma-title" placeholder="शीर्षक"></label>
+      <label>Message<input id="ma-msg" placeholder="संदेश"></label>
+      <div class="mrow"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="ma-save">💾 Save</button></div>
     </div>
   </div>
 </div>
