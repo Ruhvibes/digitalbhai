@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DigitalBhai" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">#eef1f8</item>
+        <item name="android:statusBarColor">#4f46e5</item>
+    </style>
+</resources>

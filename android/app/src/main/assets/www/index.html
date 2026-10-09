@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Digital Bhai — Cyber Cafe &amp; Digital Seva Center</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ TOP BAR ============ -->
+  <header id="topbar">
+    <div class="tb-logo">🏪</div>
+    <div class="tb-text">
+      <div class="tb-title">DIGITAL BHAI</div>
+      <div class="tb-sub" id="shop-subtitle">Cyber Cafe &amp; Digital Seva Center</div>
+    </div>
+    <div class="tb-date" id="tb-date"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 1. DASHBOARD ============ -->
+    <section class="screen active" id="s-dash">
+      <div class="stats-grid" id="stats-grid"></div>
+      <button class="big-btn" id="dash-new-work">➕ नया काम शुरू करें</button>
+      <h2 class="sec-title">🕐 आज के काम</h2>
+      <div id="dash-works"></div>
+    </section>
+
+    <!-- ============ 2. WORKS ============ -->
+    <section class="screen" id="s-works">
+      <div class="row-between">
+        <h2 class="sec-title" style="margin:0">🧾 काम</h2>
+        <button class="btn primary sm" id="works-add">➕ नया काम</button>
+      </div>
+      <div class="chips" id="work-filters">
+        <button class="chip on" data-f="all">सभी</button>
+        <button class="chip" data-f="processing">प्रोसेसिंग</button>
+        <button class="chip" data-f="pending">पेंडिंग</button>
+        <button class="chip" data-f="completed">पूर्ण</button>
+      </div>
+      <div id="works-list"></div>
+    </section>
+
+    <!-- ============ 3. CUSTOMERS ============ -->
+    <section class="screen" id="s-customers">
+      <div class="row-between">
+        <h2 class="sec-title" style="margin:0">👥 ग्राहक</h2>
+        <button class="btn primary sm" id="cust-add">➕ नया ग्राहक</button>
+      </div>
+      <div class="search-wrap">
+        <input type="search" id="cust-search" placeholder="🔍 नाम या मोबाइल खोजें…">
+      </div>
+      <div id="cust-list"></div>
+    </section>
+
+    <!-- ============ 4. PAYMENTS ============ -->
+    <section class="screen" id="s-payments">
+      <h2 class="sec-title">💰 पेमेंट</h2>
+      <div class="card highlight">
+        <div class="muted">आज का कलेक्शन</div>
+        <div class="big-amount" id="today-collection">₹0</div>
+      </div>
+      <h3 class="sec-title sm">⏳ बकाया पेमेंट</h3>
+      <div id="pending-list"></div>
+    </section>
+
+    <!-- ============ 5. MORE ============ -->
+    <section class="screen" id="s-more">
+      <h2 class="sec-title">⋮ और</h2>
+      <h3 class="sec-title sm">🛎️ सेवाएं</h3>
+      <div class="svc-grid" id="svc-grid"></div>
+      <h3 class="sec-title sm">📊 रिपोर्ट</h3>
+      <div class="card" id="report-card"></div>
+      <h3 class="sec-title sm">⚙️ सेटिंग</h3>
+      <div class="card">
+        <label class="fld-label">दुकान का नाम</label>
+        <input type="text" id="set-shopname" class="fld" placeholder="जैसे — Digital Bhai Seva Center">
+        <button class="btn primary" id="set-save" style="margin-top:10px">💾 सहेजें</button>
+      </div>
+      <div class="more-btns">
+        <button class="btn ghost" id="more-share">📤 शेयर करें</button>
+        <button class="btn ghost" id="more-feedback">💬 फीडबैक</button>
+      </div>
+      <div class="foot-note">Made by Hasnain ❤️<br>v1.0</div>
+    </section>
+
+  </main>
+
+  <!-- ============ BOTTOM NAV ============ -->
+  <nav id="bottomnav">
+    <button data-nav="s-dash" class="on">🏠<span>डैशबोर्ड</span></button>
+    <button data-nav="s-works">🧾<span>काम</span></button>
+    <button data-nav="s-customers">👥<span>ग्राहक</span></button>
+    <button data-nav="s-payments">💰<span>पेमेंट</span></button>
+    <button data-nav="s-more">⋮<span>और</span></button>
+  </nav>
+</div>
+
+<!-- ============ MODAL: NEW WORK ============ -->
+<div class="modal hidden" id="m-work">
+  <div class="modal-box">
+    <h3 id="m-work-title">➕ नया काम</h3>
+    <label class="fld-label">ग्राहक चुनें</label>
+    <select id="w-customer" class="fld"></select>
+    <label class="fld-label">सेवा चुनें</label>
+    <select id="w-service" class="fld"></select>
+    <label class="fld-label">राशि (₹)</label>
+    <input type="number" id="w-amount" class="fld" placeholder="जैसे — 150" min="0">
+    <label class="fld-label">स्थिति</label>
+    <select id="w-status" class="fld">
+      <option value="processing">प्रोसेसिंग</option>
+      <option value="pending">पेंडिंग</option>
+      <option value="completed">पूर्ण</option>
+    </select>
+    <label class="fld-label">नोट (वैकल्पिक)</label>
+    <input type="text" id="w-note" class="fld" placeholder="जैसे — कल तक देना है">
+    <div class="modal-btns">
+      <button class="btn ghost" data-close="m-work">रद्द करें</button>
+      <button class="btn primary" id="w-save">💾 सहेजें</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: NEW CUSTOMER ============ -->
+<div class="modal hidden" id="m-customer">
+  <div class="modal-box">
+    <h3>➕ नया ग्राहक</h3>
+    <label class="fld-label">नाम *</label>
+    <input type="text" id="c-name" class="fld" placeholder="जैसे — राहुल कुमार">
+    <label class="fld-label">मोबाइल *</label>
+    <input type="tel" id="c-mobile" class="fld" placeholder="10 अंकों का नंबर" maxlength="10" inputmode="numeric">
+    <label class="fld-label">पता</label>
+    <input type="text" id="c-address" class="fld" placeholder="गांव / शहर">
+    <div class="modal-btns">
+      <button class="btn ghost" data-close="m-customer">रद्द करें</button>
+      <button class="btn primary" id="c-save">💾 सहेजें</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: WORK DETAIL ============ -->
+<div class="modal hidden" id="m-detail">
+  <div class="modal-box">
+    <h3 id="d-title">🧾 काम का विवरण</h3>
+    <div id="d-body"></div>
+    <label class="fld-label">स्थिति बदलें</label>
+    <select id="d-status" class="fld">
+      <option value="processing">प्रोसेसिंग</option>
+      <option value="pending">पेंडिंग</option>
+      <option value="completed">पूर्ण</option>
+    </select>
+    <div class="modal-btns">
+      <button class="btn ghost" data-close="m-detail">बंद करें</button>
+      <button class="btn primary" id="d-pay">💰 पेमेंट लें</button>
+      <button class="btn primary" id="d-save-status">💾 स्थिति सहेजें</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: PAYMENT ============ -->
+<div class="modal hidden" id="m-payment">
+  <div class="modal-box">
+    <h3>💰 पेमेंट लें</h3>
+    <div id="p-info" class="muted" style="margin-bottom:10px"></div>
+    <label class="fld-label">राशि (₹)</label>
+    <input type="number" id="p-amount" class="fld" placeholder="जैसे — 150" min="1">
+    <div class="modal-btns">
+      <button class="btn ghost" data-close="m-payment">रद्द करें</button>
+      <button class="btn primary" id="p-save">✅ प्राप्त करें</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: CUSTOMER HISTORY ============ -->
+<div class="modal hidden" id="m-history">
+  <div class="modal-box">
+    <h3 id="h-title">👤 ग्राहक</h3>
+    <div id="h-body"></div>
+    <div class="modal-btns">
+      <button class="btn ghost" data-close="m-history">बंद करें</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>
